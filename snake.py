@@ -17,11 +17,7 @@ class Snake:
 
     def create_snake(self):
         for position in STARTING_POSITIONS:
-            segment = Turtle(shape="square")
-            segment.color("white")
-            segment.penup()
-            segment.goto(position)
-            self.segments.append(segment)
+            self.add_segment(position)
     
     def move(self):
         # This way our snake seems to have a solid one-piece body
@@ -47,3 +43,13 @@ class Snake:
     def down(self):
         if self.head.heading() != UP:
             self.head.setheading(DOWN)
+
+    def add_segment(self, position):
+        segment = Turtle(shape="square")
+        segment.color("white")
+        segment.penup()
+        segment.goto(position)
+        self.segments.append(segment)
+
+    def extend(self):
+        self.add_segment(self.segments[-1].position()) # With -1 we access the last element of the list
