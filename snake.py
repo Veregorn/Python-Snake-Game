@@ -53,3 +53,11 @@ class Snake:
 
     def extend(self):
         self.add_segment(self.segments[-1].position()) # With -1 we access the last element of the list
+
+    def reset(self):
+        for seg in self.segments:
+            seg.goto(1000, 1000) # So old segments disappear from screen
+
+        self.segments.clear()
+        self.create_snake()
+        self.head = self.segments[0]
